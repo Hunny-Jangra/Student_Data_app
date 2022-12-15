@@ -23,6 +23,13 @@
 ##### JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
 ![image](https://user-images.githubusercontent.com/104129026/207901414-959ec6c4-2ef8-457d-9bdd-859c9ae7e339.png)
 
+## Student_Data_LIST
+![image](https://user-images.githubusercontent.com/104129026/207918274-481a30ba-0e91-4d15-aa1f-d2542cd73699.png)
+###when we add a new Student just lick on the New user Icon button and once you clic on that button you will be able to add new student 
+![image](https://user-images.githubusercontent.com/104129026/207918734-bacb3199-a992-4387-9db6-e2574d405cd1.png)
+
+
+
 
 
 
