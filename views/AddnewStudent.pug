@@ -1,0 +1,34 @@
+doctype html 
+html 
+    head 
+        style 
+            include ../css/style.css
+        title Student-List 
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer")
+        script(src="https://kit.fontawesome.com/53f1de675b.js" crossorigin="anonymous")
+
+    body 
+        div.student_list 
+            h1.student_list_heading Student Management System
+        .container 
+            .box-newUser 
+                    a(href="data")
+                        i(class="fa-solid fa-left-long-to-line") &larr; All Student_List
+        .form_box
+            form.form_NewStudent(action="/api/students" method="post" id="add_student") 
+                label.new_student_label(for="new_student") Enter_Name
+                input.new_student_input(type="text" name="student_name")
+                br
+                label.new_student_label(for="new_student") Enter_Subject
+                input.new_student_input(type="text" name="student_subject" id="for_subject_text")
+                br
+                label.new_student_label(for="new_student") Enter_Marks
+                input.new_student_input(type="text" name="student_marks")
+                br
+                button.for_newStudent_submit(type="submit" ) Save_Record
+        script.
+            $("#add_student").submit(function(event) {
+                alert("Insert data successfully....");
+            })
+
+                    

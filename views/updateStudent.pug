@@ -1,0 +1,60 @@
+doctype html 
+html 
+    head 
+        style 
+            include ../css/style.css
+        title Student-List 
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer")
+        script(src="https://kit.fontawesome.com/53f1de675b.js" crossorigin="anonymous")
+
+    body 
+        div.student_list 
+            h1.student_list_heading Student Management System
+        .container 
+            .box-newUser 
+                    a(href="data")
+                        i(class="fa-solid fa-left-long-to-line") &larr; All Student_List
+        .form_box
+            form.form_NewStudent(method="post" id="student_data_update") 
+                label.new_student_label(for="new_student") Enter_Name
+                - let name = student.getallStudentsdata.name;
+                input.new_student_input(type="text" name="student_name" value=`${name}`)
+                br
+                - let subject = student.getallStudentsdata.subject;
+                - var id = student.getallStudentsdata._id
+                label.new_student_label(for="new_student") Enter_Subject
+                input.new_student_input(type="text" name="student_subject" id="for_subject_text" value=`${subject}`)
+                br
+                - let marks = student.getallStudentsdata.marks;
+                label.new_student_label(for="new_student") Enter_Marks
+                input.new_student_input(type="text" name="student_marks" value=`${marks}`)
+                br
+                button.for_newStudent_submit(type="submit" ) Save_Record
+        script.
+            $("#student_data_update").submit(function(event) {
+                event.preventDefault();
+                var Id = this.action.split('=');
+                var [first, second] = Id;
+                console.log(second);
+                var unindexedArray = $(this).serializeArray();
+                console.log(unindexedArray);
+                let data = {};
+                $.map(unindexedArray, function(n, i) {
+                    data[n['name']] = n['value']
+                })
+
+                console.log('Data here',data)
+
+                var request = {
+                    "url" : `http://localhost:3000/api/students/${second}`,
+                    "method" : "PUT",
+                    "data" : data
+                }
+                console.log('After Data here',data)
+
+                $.ajax(request).done(function(response) {
+                    alert("data updated Successfully");
+                })
+            })
+
+                    

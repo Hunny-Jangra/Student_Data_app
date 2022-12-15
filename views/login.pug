@@ -1,0 +1,25 @@
+doctype html 
+html
+    head 
+        style   
+            include ../css/style.css
+        title Student Data- SignUP
+    body 
+        include ./includes/nav.pug
+        main.main_class 
+            div.signup_form 
+                .heading
+                    h2 LOG INTO YOUR ACCOUNT
+                form(action="/login" method="POST") 
+                    .form
+                    
+                        label.form_label(for="your_email") Email
+                        input.your_Name(type="email" name="your_email" id="your_email" placeholder="First name")
+                        br
+                        label.form_label(for="your_password") Password
+                        input.your_Name(type="password" name="your_password" id="your_password" placeholder="you@example.com")
+                        
+                        br
+                        button.form_button(type="submit" value="login") submit
+                        //- a.form_button(href="/app/v1/student_data") Log_In
+

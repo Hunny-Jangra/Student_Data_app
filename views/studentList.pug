@@ -1,0 +1,77 @@
+doctype html 
+html 
+    head 
+        style 
+            include ../css/style.css
+        title Student-List 
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer")
+        script(src="https://kit.fontawesome.com/53f1de675b.js" crossorigin="anonymous")
+
+    body 
+        div.student_list 
+            h1.student_list_heading Student Management System
+        .container 
+            .box-newUser 
+                span NewUser
+                    a(href="AddnewStudent")
+                        i(class="fa-solid fa-user")
+                    
+        .form_box 
+            form.form_table_student(action="/" method="POST")
+                table.table 
+                    thead.thead_dark 
+                        tr 
+                            th S.NO
+                            th NAME
+                            th SUBJECT
+                            th MARKS
+                            th ACTION 
+                    tbody 
+                        - var i; 
+                        - for(i=0; i<student.getallStudentsdata.length; i++)  
+                            
+                            tr 
+                                td #{i+1}
+                                td #{student.getallStudentsdata[i].name}
+                                td #{student.getallStudentsdata[i].subject}
+                                td #{student.getallStudentsdata[i].marks}
+                                td 
+                                    - let ID = student.getallStudentsdata[i]._id;
+                                    a(href=`/student/student-List/updateStudent?id=${ID}` class ="edit_button")
+                                        i(class="fa-sharp fa-solid fa-pen-nib")
+                                    a(href='/student/student-List/data' class ="edit_button delete" dataid=`${ID}`)
+                                        i(class="fa-solid fa-circle-xmark")
+        script.
+            if(window.location.pathname == '/student/student-List/data'){
+                $ondelete = $(".table tbody td a.delete");
+                //- console.log(this.$ondelete[1].attributes.dataid.value)
+                $ondelete.click(function() {
+                    //- var id = $(this).$ondelete.attributes.dataid.value;
+                    console.log(id)
+
+                    var request = {
+                        "url" : `http://localhost:3000/api/students/639493699557ff8ce1440bd6`,
+                        "method" : "DELETE"
+                    }
+
+                    if(confirm("Do You want to delete Record")){
+                        $.ajax(request).done(function() {
+                            alert("data deleted Successfully");
+                            location.reload();
+                        })
+                    }
+                })
+            }else{
+                console.log('This is else block')
+            }
+                        
+                               
+                            
+
+            
+
+
+
+                   
+
+            
